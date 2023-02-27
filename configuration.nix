@@ -35,9 +35,10 @@ in
   # Printer
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [ 
-  	gutenprint
-	gutenprintBin
-        samsung-unified-linux-driver
+    gutenprint
+	  gutenprintBin
+    samsung-unified-linux-driver
+    canon-cups-ufr2
   ];
 
   # Select internationalisation properties.
@@ -80,6 +81,17 @@ in
   };
 
   nix.settings.auto-optimise-store = true;
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -148,18 +160,23 @@ in
     libreoffice
     anydesk
     xclip
-    busybox
+    virt-manager
+    qemu
+    lazygit
+    fd
+    nomacs
+    exiftool
+    bleachbit
   ];
 
+
+  virtualisation.libvirtd.enable = true;
   xdg.portal.enable = true;
   services.flatpak.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "dsuetin" ];
-
   environment.sessionVariables = rec {
     TERMINAL="/run/current-system/sw/bin/kitty";
+    NIXOS_OZONE_WL = "1";
   };
 
   # Java
