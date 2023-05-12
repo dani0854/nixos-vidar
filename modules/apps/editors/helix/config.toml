@@ -1,0 +1,5 @@
+theme = "nord"
+
+[editor]
+bufferline = "multiple"
+color-modes = true
