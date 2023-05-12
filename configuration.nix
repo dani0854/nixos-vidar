@@ -35,9 +35,10 @@ in
   # Printer
   services.printing.enable = true;
   services.printing.drivers = with pkgs; [ 
-  	gutenprint
-	gutenprintBin
-        samsung-unified-linux-driver
+    gutenprint
+	  gutenprintBin
+    samsung-unified-linux-driver
+    canon-cups-ufr2
   ];
 
   # Select internationalisation properties.
@@ -75,11 +76,22 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dsuetin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "networkmanager" "libvirtd" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
   nix.settings.auto-optimise-store = true;
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -119,7 +131,7 @@ in
     freerdp
     openssl
     thunderbird
-    ledger-live-desktop
+    unstable.ledger-live-desktop
     rustup
     gcc
     go
@@ -148,18 +160,45 @@ in
     libreoffice
     anydesk
     xclip
-    busybox
+    unstable.virt-manager
+    lazygit
+    fd
+    nomacs
+    exiftool
+    bleachbit
+    unstable.monero-gui
+    unzip
+    unstable.helix
+    nil
+    broot
+    wezterm
+    microsoft-edge
+    ffmpeg
+    unstable.fractal
+    xournalpp
   ];
 
+  security.sudo.enable = false;
+  security.doas = {
+    enable = true;
+  };
+
+  hardware.ledger.enable = true;
+
+  virtualisation.libvirtd = {
+    enable = true;
+    package = unstable.libvirt;
+    qemu.package = unstable.qemu;
+    qemu.ovmf.packages = [ unstable.OVMF.fd ];
+  };
+
+  
   xdg.portal.enable = true;
   services.flatpak.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "dsuetin" ];
-
   environment.sessionVariables = rec {
     TERMINAL="/run/current-system/sw/bin/kitty";
+    NIXOS_OZONE_WL = "1";
   };
 
   # Java
