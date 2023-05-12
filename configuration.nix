@@ -76,7 +76,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dsuetin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "networkmanager" "libvirtd" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 
@@ -131,7 +131,7 @@ in
     freerdp
     openssl
     thunderbird
-    ledger-live-desktop
+    unstable.ledger-live-desktop
     rustup
     gcc
     go
@@ -160,17 +160,39 @@ in
     libreoffice
     anydesk
     xclip
-    virt-manager
-    qemu
+    unstable.virt-manager
     lazygit
     fd
     nomacs
     exiftool
     bleachbit
+    unstable.monero-gui
+    unzip
+    unstable.helix
+    nil
+    broot
+    wezterm
+    microsoft-edge
+    ffmpeg
+    unstable.fractal
+    xournalpp
   ];
 
+  security.sudo.enable = false;
+  security.doas = {
+    enable = true;
+  };
 
-  virtualisation.libvirtd.enable = true;
+  hardware.ledger.enable = true;
+
+  virtualisation.libvirtd = {
+    enable = true;
+    package = unstable.libvirt;
+    qemu.package = unstable.qemu;
+    qemu.ovmf.packages = [ unstable.OVMF.fd ];
+  };
+
+  
   xdg.portal.enable = true;
   services.flatpak.enable = true;
 
