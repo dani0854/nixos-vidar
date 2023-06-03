@@ -6,7 +6,7 @@
   ];
 
   home-manager.users.main = {
-    home.file.".config/helix/config.toml".source = ./config.toml;
-    home.file.".config/helix/languages.toml".source = ./languages.toml;
+    xdg.configFile."helix/config.toml".source = ./config.toml;
+    xdg.configFile."helix/languages.toml".source = ./languages.toml;
   };
 }
