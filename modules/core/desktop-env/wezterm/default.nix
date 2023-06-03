@@ -6,6 +6,6 @@
   ];
 
   home-manager.users.main = {
-    home.file.".config/wezterm/wezterm.lua".source = ./wezterm.lua;
+    xdg.configFile."wezterm/wezterm.lua".source = ./wezterm.lua;
   };
 }
