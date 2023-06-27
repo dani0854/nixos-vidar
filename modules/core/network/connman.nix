@@ -3,7 +3,7 @@
 {
   services.connman = {
     enable = true;
-    package = pkgs.connman.override { firewallType = "nftables"; dnsType = "systemd-resolved"; };   
+    package = pkgs.connman.override { firewallType = "nftables"; };   
     wifi.backend = "iwd";
   };
   

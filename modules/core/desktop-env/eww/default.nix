@@ -30,7 +30,7 @@
     serviceConfig = {
         Type = "oneshot";
         RemainAfterExit= "yes";
-        ExecStart = "echo '${pkgs.eww-wayland}/bin/eww -c $XDG_CONFIG_HOME/eww/bar open bar'";
+        ExecStart = "'${pkgs.eww-wayland}/bin/eww -c $XDG_CONFIG_HOME/eww/bar open bar'";
         ExecStop = "${pkgs.eww-wayland}/bin/eww -c $XDG_CONFIG_HOME/eww/bar close bar";
         Slice = "session.slice";
         Restart = "on-failure";

@@ -1,4 +1,4 @@
-{ home-manager, pkgs, ... }:
+{ config, home-manager, pkgs, ... }:
 
 {
   programs.hyprland = {
@@ -20,6 +20,10 @@
     wants = [ "graphical-session-pre.target" ];
     after = [ "graphical-session-pre.target" ];
   };
+  
+  environment.etc."greetd/environments".text = ''
+    ${config.programs.hyprland.package}/bin/Hyprland
+  '';
 
   home-manager.users.main = {
     home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
