@@ -1,5 +1,0 @@
-{ ... }: 
-
-{
-  services.greetd.enable = false;
-}
