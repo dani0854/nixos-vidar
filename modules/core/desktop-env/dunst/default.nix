@@ -9,8 +9,8 @@
     enable = true;
     description = "Dunst notification daemon";
     documentation = [ "man:dunst(1)" ];
-    partOf = [ "hyprland-session.target" ];
-    wantedBy = [ "hyprland-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
         Type = "dbus";
         BusName = "org.freedesktop.Notifications";

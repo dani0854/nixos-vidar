@@ -8,8 +8,8 @@
   systemd.user.services.hyprpaper = {
     enable = true;
     description = "Wayland wallpaper";
-    partOf = [ "hyprland-session.target" ];
-    wantedBy = [ "hyprland-session.target" ];
+    partOf = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.hyprpaper}/bin/hyprpaper";
