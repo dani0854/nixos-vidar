@@ -11,6 +11,7 @@
     enable = true;
     description = "KDE PolicyKit Authentication Agent";
     partOf = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
         Type = "dbus";
         BusName = "org.kde.polkit-kde-authentication-agent-1";
