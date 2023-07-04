@@ -25,6 +25,12 @@
     ${config.programs.hyprland.package}/bin/Hyprland
   '';
 
+  environment.systemPackages = with pkgs; [
+    grim
+    slurp
+    wl-clipboard
+  ];
+
   home-manager.users.main = {
     home.sessionVariables = { NIXOS_OZONE_WL = "1"; };
     xdg.configFile."hypr/hyprland.conf".text = ''
