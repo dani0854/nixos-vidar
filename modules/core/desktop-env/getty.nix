@@ -1,5 +1,5 @@
 { config, ... }:
 
 {
-	services.getty.autologinUser = config.users.users.main
+	services.getty.autologinUser = config.users.users.main.name;
 }
