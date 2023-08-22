@@ -5,12 +5,9 @@
     enable = true;
 
     # default options, you don't need to set them
-    xwayland = {
-      enable = true;
-      hidpi = true;
-    };
+    xwayland.enable = true;
 
-    nvidiaPatches = false;
+    enableNvidiaPatches = false;
   };
 
   systemd.user.targets.hyprland-session = {
