@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     git
+    git-lfs
   ];
   
   home-manager.users.main = {
