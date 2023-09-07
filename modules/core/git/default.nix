@@ -4,6 +4,8 @@
   environment.systemPackages = with pkgs; [
     git
     git-lfs
+    git-crypt
+    git-secrets
   ];
   
   home-manager.users.main = {
