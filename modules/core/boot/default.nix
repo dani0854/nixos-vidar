@@ -15,5 +15,8 @@
 
   hardware.enableRedistributableFirmware = true;
 
-  boot.extraModprobeConfig = "options usbcore use_both_schemes=y";
+  boot.extraModprobeConfig = "
+    options usbcore use_both_schemes=y
+    options usbcore autosuspend=-1
+  ";
 }
