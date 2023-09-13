@@ -14,4 +14,6 @@
   boot.kernelModules = [ "kvm-amd" ];
 
   hardware.enableRedistributableFirmware = true;
+
+  boot.extraModprobeConfig = "options usbcore use_both_schemes=y";
 }
