@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  programs.wavemon.enable = true;
+}
