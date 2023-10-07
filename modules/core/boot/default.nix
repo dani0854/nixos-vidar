@@ -16,7 +16,7 @@
   hardware.enableRedistributableFirmware = true;
 
   boot.extraModprobeConfig = "
-    options usbcore use_both_schemes=y
-    options usbcore autosuspend=-1
+    options iwlwifi power_save=0
+    options iwlmvm power_scheme=1
   ";
 }
