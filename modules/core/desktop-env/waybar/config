@@ -80,7 +80,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "/run/current-system/sw/bin/sh -c '/run/current-system/sw/bin/pkill pavucontrol || /run/current-system/sw/bin/pavucontrol'"
     },
     "custom/docker": {
         "format": "{} ",
