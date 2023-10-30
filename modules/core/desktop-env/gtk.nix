@@ -13,6 +13,10 @@
 				package = pkgs.nordzy-icon-theme;
 				name = "Nordzy";
 			};
+			cursorTheme = {
+				package = pkgs.capitaine-cursors-themed;
+				name = "Capitaine Cursors (Nord)";
+			};
 		};
   };
 }
