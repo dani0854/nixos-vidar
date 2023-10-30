@@ -1,24 +1,22 @@
 { pkgs, ... }:
 
 {
-  services.connman = {
-    enable = true;
-    wifi.backend = "iwd";
-  };
+  networking.wireless.iwd.enable = true;
   
   environment.systemPackages = with pkgs; [
-    cmst
+    iwgtk
+    gnome.adwaita-icon-theme
   ];
 
-  systemd.user.services.cmst = {
+  systemd.user.services.iwgtk = {
     enable = true;
-    description = "QT GUI for Connman with system tray icon";
+    description = "Lightweight wireless networking GUI (front-end for iwd)";
     partOf = [ "graphical-session.target" ];
     wantedBy = [ "graphical-session.target" ];
     after = [ "waybar.service" ];
     serviceConfig = {
         Type = "exec";
-        ExecStart = "${pkgs.cmst}/bin/cmst -m";
+        ExecStart = "${pkgs.iwgtk}/bin/iwgtk --indicators";
         Slice = "session.slice";
         Restart = "on-failure";
         RestartSec = 1;
