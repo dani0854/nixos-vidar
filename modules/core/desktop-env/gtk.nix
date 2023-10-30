@@ -8,7 +8,7 @@
 				package = pkgs.nordic;
 				name = "Nordic";
 			};
-			font.name = "FiraCode";
+			font.name = "Fira Code Nerd Font";
 			iconTheme = {
 				package = pkgs.nordzy-icon-theme;
 				name = "Nordzy";
