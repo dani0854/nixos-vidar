@@ -3,10 +3,7 @@
 {
   programs.hyprland = {
     enable = true;
-
-    # default options, you don't need to set them
     xwayland.enable = true;
-
     enableNvidiaPatches = false;
   };
 
