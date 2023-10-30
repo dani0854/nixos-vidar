@@ -1,4 +1,0 @@
-timeout 300 /run/current-system/sw/bin/swaylock
-timeout 600 /run/current-system/sw/bin/systemctl hibernate
-before-sleep /run/current-system/sw/bin/swaylock
-lock /run/current-system/sw/bin/swaylock
