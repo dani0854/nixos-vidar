@@ -1,9 +1,7 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  virtualisation.docker.enable = true;
 
-{
-	virtualisation.docker.enable = true;
-
-	users.users.main.extraGroups = [ "docker" ];
+  users.users.main.extraGroups = ["docker"];
 
   environment.systemPackages = with pkgs; [
     ctop

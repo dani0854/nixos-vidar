@@ -1,7 +1,5 @@
-{ ... }:
-
-{
-  boot.initrd.availableKernelModules = [ 
+{...}: {
+  boot.initrd.availableKernelModules = [
     "nvme"
     "ehci_pci"
     "xhci_pci"
@@ -10,8 +8,8 @@
     "rtsx_pci_sdmmc"
     "amdgpu"
   ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.initrd.kernelModules = ["dm-snapshot"];
+  boot.kernelModules = ["kvm-amd"];
 
   hardware.enableRedistributableFirmware = true;
 

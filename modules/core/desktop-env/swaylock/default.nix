@@ -1,12 +1,10 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home-manager.users.main = {
     programs.swaylock = {
       enable = true;
       package = pkgs.swaylock-effects;
       settings = {
-        image="~/.config/swaylock/screenlock.png";      
+        image = "~/.config/swaylock/screenlock.png";
         clock = true;
         indicator = true;
         indicator-radius = 200;
@@ -52,7 +50,7 @@
     };
     xdg.configFile."swaylock/screenlock.png".source = ./screenlock.png;
   };
-  
+
   security.pam.services.swaylock.text = ''
     # Account management.
     account required pam_unix.so

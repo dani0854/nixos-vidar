@@ -1,11 +1,9 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  virtualisation.libvirtd.enable = true;
 
-{
-	virtualisation.libvirtd.enable = true;
+  environment.systemPackages = with pkgs; [
+    virt-manager
+  ];
 
-	environment.systemPackages = with pkgs; [
-		virt-manager
-	];
-
-	users.users.main.extraGroups = [ "libvirtd" ];
+  users.users.main.extraGroups = ["libvirtd"];
 }

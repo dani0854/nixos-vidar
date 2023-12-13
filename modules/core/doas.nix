@@ -1,13 +1,11 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   security.sudo.enable = false;
 
   security.doas = {
     enable = true;
     extraRules = [
       {
-        groups = [ "wheel" ];
+        groups = ["wheel"];
         keepEnv = true;
         persist = true;
       }
@@ -35,5 +33,5 @@
     doas-sudo-shim
   ];
 
-  users.users.main.extraGroups = [ "wheel" ];
+  users.users.main.extraGroups = ["wheel"];
 }

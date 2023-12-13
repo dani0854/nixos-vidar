@@ -1,5 +1,3 @@
-{ ... }:
-
-{
+{...}: {
   services.redshift.enable = true;
 }

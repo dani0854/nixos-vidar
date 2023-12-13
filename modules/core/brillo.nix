@@ -1,7 +1,5 @@
-{ ... }:
-
-{
+{...}: {
   hardware.brillo.enable = true;
-  
-  users.users.main.extraGroups = [ "video" ];
+
+  users.users.main.extraGroups = ["video"];
 }

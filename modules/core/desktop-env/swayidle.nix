@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home-manager.users.main = {
     services.swayidle = {
       enable = true;

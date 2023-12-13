@@ -17,25 +17,27 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... } @ inputs: 
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
     inherit (self) outputs;
     system = "x86_64-linux";
-  in
-  {
+  in {
     # Custom packages
     # Accessible through 'nix build', 'nix shell', etc
     packages.${system} = import ./pkgs nixpkgs.legacyPackages.${system};
 
     # Nix formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
-  
+
     # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays { inherit inputs; };
+    overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations.vidar = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs outputs; };
+      specialArgs = {inherit inputs outputs;};
       modules = [
         {
           nix.settings = {

@@ -1,5 +1,3 @@
-{ ... }:
-
-{
-	time.timeZone = "Asia/Bangkok";
+{...}: {
+  time.timeZone = "Asia/Bangkok";
 }
