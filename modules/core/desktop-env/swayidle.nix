@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home-manager.users.main = {
@@ -18,8 +18,8 @@
       timeouts = [
         {
           timeout = 250;
-          command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-          resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+          command = "${config.home-manager.users.main.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+          resumeCommand = "${config.home-manager.users.main.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
         }
         {
           timeout = 300;

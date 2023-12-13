@@ -1,10 +1,6 @@
-{ config, inputs, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
-  environment.etc."greetd/environments".text = ''
-    ${config.home-manager.users.main.wayland.windowManager.hyprland.package}/bin/Hyprland
-  '';
-
   environment.systemPackages = with pkgs; [
     grim
     slurp
