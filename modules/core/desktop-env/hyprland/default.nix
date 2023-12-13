@@ -1,4 +1,4 @@
-{ config, home-manager, hyprland, split-monitor-workspaces, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   environment.etc."greetd/environments".text = ''
@@ -19,15 +19,15 @@
   };
 
   home-manager.users.main = {
-    imports = [ hyprland.homeManagerModules.default ];
+    imports = [ inputs.hyprland.homeManagerModules.default ];
     wayland.windowManager.hyprland = {
       enable = true;
-      package = hyprland.packages.${pkgs.system}.hyprland;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       xwayland.enable = true;
       systemdIntegration = true;
       recommendedEnvironment = true;
       plugins = [
-        split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+        inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
       ];
       extraConfig = builtins.readFile ./hyprland.conf;
     };

@@ -19,6 +19,7 @@
 
   outputs = { self, nixpkgs, ... } @ inputs: 
   let
+    inherit (self) outputs;
     system = "x86_64-linux";
   in
   {
@@ -34,7 +35,7 @@
 
     nixosConfigurations.vidar = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = inputs;
+      specialArgs = { inherit inputs outputs; };
       modules = [
         {
           nix.settings = {
