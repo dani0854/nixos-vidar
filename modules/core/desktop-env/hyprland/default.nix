@@ -22,8 +22,7 @@
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       xwayland.enable = true;
-      systemdIntegration = true;
-      recommendedEnvironment = true;
+      systemd.enable = true;
       plugins = [
         inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
       ];
