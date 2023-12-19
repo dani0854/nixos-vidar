@@ -6,3 +6,10 @@ formatter = { command = "nixpkgs-fmt" }
 name = "go"
 auto-format = true
 formatter = { command = "goimports" }
+
+[[language]]
+name = "markdown"
+language-servers = [ "marksman", "ltex-ls" ]
+
+[language-server.ltex-ls.config]
+ltex.languageToolHttpServerUri = "http://localhost:8081/"
