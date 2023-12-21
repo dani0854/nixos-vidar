@@ -46,8 +46,6 @@
             hash = "sha256-PAR0E8qxHBfkHYLJQH3hiuGMuyNF4cw9UbQeXVbau/A=";
           };
         });
-
-      pipelinePrewarming = true;
     };
   };
 }

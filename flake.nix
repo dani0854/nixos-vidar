@@ -32,8 +32,11 @@
     # Nix formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
-    # Your custom packages and modifications, exported as overlays
+    # Packages and modifications, exported as overlays
     overlays = import ./overlays {inherit inputs;};
+
+    # NixOS modules you might want to export
+    nixosModules = import ./modules;
 
     nixosConfigurations.vidar = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -45,7 +48,7 @@
             trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
           };
         }
-        ./modules
+        ./config
       ];
     };
   };
