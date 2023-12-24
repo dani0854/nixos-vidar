@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
-    helix
+{ inputs, pkgs, ... }: {
+  environment.systemPackages = [
+    inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.helix
   ];
 
   home-manager.users.main = {

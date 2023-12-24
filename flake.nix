@@ -15,6 +15,10 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -55,8 +59,14 @@
               experimental-features = "nix-command flakes";
               auto-optimise-store = true;
 
-              substituters = [ "https://hyprland.cachix.org" ];
-              trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+              substituters = [
+                "https://hyprland.cachix.org"
+                "https://helix.cachix.org"
+              ];
+              trusted-public-keys = [
+                "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+                "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+              ];
             };
           })
           ./config
