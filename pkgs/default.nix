@@ -1,3 +1,3 @@
-pkgs: {
+{pkgs, ...}: {
   wezterm = pkgs.callPackage ./wezterm {};
 }

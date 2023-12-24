@@ -33,7 +33,7 @@
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     # Packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays;
 
     # NixOS modules you might want to export
     nixosModules = import ./modules;
@@ -42,12 +42,21 @@
       inherit system;
       specialArgs = {inherit inputs outputs;};
       modules = [
-        {
+        ({lib, ...}: {
+          imports = lib.attrValues outputs.nixosModules;
+          nixpkgs = {
+            overlays = lib.attrValues outputs.overlays;
+
+            config.allowUnfree = true;
+          };
           nix.settings = {
+            experimental-features = "nix-command flakes";
+            auto-optimise-store = true;
+
             substituters = ["https://hyprland.cachix.org"];
             trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
           };
-        }
+        })
         ./config
       ];
     };
