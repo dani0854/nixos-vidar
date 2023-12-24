@@ -8,27 +8,30 @@ with lib; let
   settingsFormat = pkgs.formats.javaProperties { };
 in
 {
+  options.services.languagetool = {
+    jvmOptions = mkOption {
+      description = lib.mdDoc "Extra command line options for the JVM running languagetool.";
+      default = [ ];
+      type = types.listOf types.str;
+      example = [
+        "-Xmx512m"
+      ];
+    };
+  };
+
   config = mkIf cfg.enable {
-    systemd.services.languagetool = {
-      description = "LanguageTool HTTP server";
-      wantedBy = [ "multi-user.target" ];
-      after = [ "network.target" ];
-      serviceConfig = {
-        DynamicUser = true;
-        User = "languagetool";
-        Group = "languagetool";
-        CapabilityBoundingSet = [ "" ];
-        RestrictNamespaces = [ "" ];
-        SystemCallFilter = [ "@system-service" "~ @privileged" ];
-        ProtectHome = "yes";
-        ExecStart = ''
-          ${pkgs.languagetool}/bin/languagetool-http-server \
+    systemd.services.languagetool.serviceConfig = {
+      Restart = "on-failure";
+      ExecStart = mkForce ''
+        ${pkgs.jre}/bin/java \
+          -cp ${pkgs.languagetool}/share/languagetool-server.jar \
+          ${toString cfg.jvmOptions} \
+          org.languagetool.server.HTTPServer \
             --port ${toString cfg.port} \
             ${optionalString cfg.public "--public"} \
             ${optionalString (cfg.allowOrigin != null) "--allow-origin ${cfg.allowOrigin}"} \
             "--config" ${settingsFormat.generate "languagetool.conf" cfg.settings}
-        '';
-      };
+      '';
     };
   };
 }
