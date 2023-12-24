@@ -1,3 +1,3 @@
-{...}: {
+{ ... }: {
   services.gpsd.enable = true;
 }

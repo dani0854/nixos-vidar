@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 # TODO: Refactor
 # TODO: Add comments
 {
@@ -19,6 +19,6 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-label/swap";}
+    { device = "/dev/disk/by-label/swap"; }
   ];
 }

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   networking.wireless.iwd.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -9,9 +9,9 @@
   systemd.user.services.iwgtk = {
     enable = true;
     description = "Lightweight wireless networking GUI (front-end for iwd)";
-    partOf = ["graphical-session.target"];
-    wantedBy = ["graphical-session.target"];
-    after = ["waybar.service"];
+    partOf = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session.target" ];
+    after = [ "waybar.service" ];
     serviceConfig = {
       Type = "exec";
       ExecStart = "${pkgs.iwgtk}/bin/iwgtk --indicators";

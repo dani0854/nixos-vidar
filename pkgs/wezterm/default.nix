@@ -1,28 +1,28 @@
-{
-  stdenv,
-  rustPlatform,
-  lib,
-  fetchFromGitHub,
-  ncurses,
-  perl,
-  pkg-config,
-  python3,
-  fontconfig,
-  installShellFiles,
-  openssl,
-  libGL,
-  libX11,
-  libxcb,
-  libxkbcommon,
-  xcbutil,
-  xcbutilimage,
-  xcbutilkeysyms,
-  xcbutilwm,
-  wayland,
-  zlib,
-  nixosTests,
-  runCommand,
-  vulkan-loader,
+{ stdenv
+, rustPlatform
+, lib
+, fetchFromGitHub
+, ncurses
+, perl
+, pkg-config
+, python3
+, fontconfig
+, installShellFiles
+, openssl
+, libGL
+, libX11
+, libxcb
+, libxkbcommon
+, xcbutil
+, xcbutilimage
+, xcbutilkeysyms
+, xcbutilwm
+, wayland
+, zlib
+, nixosTests
+, runCommand
+, vulkan-loader
+,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "wezterm";
@@ -77,7 +77,7 @@ rustPlatform.buildRustPackage rec {
       xcbutilwm # contains xcb-ewmh among others
     ];
 
-  buildFeatures = ["distro-defaults"];
+  buildFeatures = [ "distro-defaults" ];
 
   env.NIX_LDFLAGS = lib.optionalString stdenv.isDarwin "-framework System";
 
@@ -121,9 +121,9 @@ rustPlatform.buildRustPackage rec {
     };
     terminfo =
       runCommand "wezterm-terminfo"
-      {
-        nativeBuildInputs = [ncurses];
-      } ''
+        {
+          nativeBuildInputs = [ ncurses ];
+        } ''
         mkdir -p $out/share/terminfo $out/nix-support
         tic -x -o $out/share/terminfo ${src}/termwiz/data/wezterm.terminfo
       '';
@@ -134,6 +134,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://wezfurlong.org/wezterm";
     license = licenses.mit;
     mainProgram = "wezterm";
-    maintainers = with maintainers; [SuperSandro2000 mimame];
+    maintainers = with maintainers; [ SuperSandro2000 mimame ];
   };
 }

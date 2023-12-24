@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   fprintdOnOpenLid = pkgs.writeScriptBin "fprintd-on-open-lid" ''
     #!/usr/bin/env bash
 
@@ -11,13 +12,14 @@
     	${pkgs.fprintd}/bin/fprintd-verify > /dev/null
     fi
   '';
-in {
+in
+{
   environment.systemPackages = [
     pkgs.fprintd
     fprintdOnOpenLid
   ];
 
-  systemd.packages = [pkgs.fprintd];
+  systemd.packages = [ pkgs.fprintd ];
 
-  services.dbus.packages = [pkgs.fprintd];
+  services.dbus.packages = [ pkgs.fprintd ];
 }

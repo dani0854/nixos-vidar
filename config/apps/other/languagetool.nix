@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services.languagetool = {
     enable = true;
     allowOrigin = "";
@@ -12,17 +12,17 @@
       # https://languagetool.org/download/ngram-data/
       languageModel =
         pkgs.linkFarm "languageModel"
-        (builtins.mapAttrs (_: v: pkgs.fetchzip v) {
-          en = {
-            # 15GB
-            url = "https://languagetool.org/download/ngram-data/ngrams-en-20150817.zip";
-            hash = "sha256-v3Ym6CBJftQCY5FuY6s5ziFvHKAyYD3fTHr99i6N8sE=";
-          };
-          ru = {
-            url = "https://languagetool.org/download/ngram-data/untested/ngram-ru-20150914.zip";
-            hash = "sha256-X2/TLHJHSylIaHYLbuWxHZ8zVjawv5w35niaHBM7pOg=";
-          };
-        });
+          (builtins.mapAttrs (_: v: pkgs.fetchzip v) {
+            en = {
+              # 15GB
+              url = "https://languagetool.org/download/ngram-data/ngrams-en-20150817.zip";
+              hash = "sha256-v3Ym6CBJftQCY5FuY6s5ziFvHKAyYD3fTHr99i6N8sE=";
+            };
+            ru = {
+              url = "https://languagetool.org/download/ngram-data/untested/ngram-ru-20150914.zip";
+              hash = "sha256-X2/TLHJHSylIaHYLbuWxHZ8zVjawv5w35niaHBM7pOg=";
+            };
+          });
 
       fasttextBinary = "${pkgs.fasttext}/bin/fasttext";
       # Data from:
@@ -39,13 +39,13 @@
       # https://languagetool.org/download/word2vec/
       word2vecModel =
         pkgs.linkFarm "word2vec"
-        (builtins.mapAttrs (_: v: pkgs.fetchzip v) {
-          en = {
-            # 83M
-            url = "https://languagetool.org/download/word2vec/en.zip";
-            hash = "sha256-PAR0E8qxHBfkHYLJQH3hiuGMuyNF4cw9UbQeXVbau/A=";
-          };
-        });
+          (builtins.mapAttrs (_: v: pkgs.fetchzip v) {
+            en = {
+              # 83M
+              url = "https://languagetool.org/download/word2vec/en.zip";
+              hash = "sha256-PAR0E8qxHBfkHYLJQH3hiuGMuyNF4cw9UbQeXVbau/A=";
+            };
+          });
     };
   };
 }

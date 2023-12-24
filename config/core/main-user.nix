@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   users.users.main = {
     name = "dsuetin";
     uid = 1000;

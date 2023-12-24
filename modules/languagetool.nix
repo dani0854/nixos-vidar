@@ -1,25 +1,25 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 with lib; let
   cfg = config.services.languagetool;
-  settingsFormat = pkgs.formats.javaProperties {};
-in {
+  settingsFormat = pkgs.formats.javaProperties { };
+in
+{
   config = mkIf cfg.enable {
     systemd.services.languagetool = {
       description = "LanguageTool HTTP server";
-      wantedBy = ["multi-user.target"];
-      after = ["network.target"];
+      wantedBy = [ "multi-user.target" ];
+      after = [ "network.target" ];
       serviceConfig = {
         DynamicUser = true;
         User = "languagetool";
         Group = "languagetool";
-        CapabilityBoundingSet = [""];
-        RestrictNamespaces = [""];
-        SystemCallFilter = ["@system-service" "~ @privileged"];
+        CapabilityBoundingSet = [ "" ];
+        RestrictNamespaces = [ "" ];
+        SystemCallFilter = [ "@system-service" "~ @privileged" ];
         ProtectHome = "yes";
         ExecStart = ''
           ${pkgs.languagetool}/bin/languagetool-http-server \

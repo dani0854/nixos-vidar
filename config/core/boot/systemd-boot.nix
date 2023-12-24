@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 # TODO: Refactor
 # TODO: Add comments
 {

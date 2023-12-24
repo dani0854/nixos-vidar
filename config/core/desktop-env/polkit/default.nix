@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   security.polkit.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -8,8 +8,8 @@
   systemd.user.services.polkit-kde-authentication-agent = {
     enable = true;
     description = "KDE PolicyKit Authentication Agent";
-    partOf = ["graphical-session.target"];
-    wantedBy = ["graphical-session.target"];
+    partOf = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
       Type = "dbus";
       BusName = "org.kde.polkit-kde-authentication-agent-1";

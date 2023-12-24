@@ -1,7 +1,6 @@
-{
-  inputs,
-  pkgs,
-  ...
+{ inputs
+, pkgs
+, ...
 }: {
   environment.systemPackages = with pkgs; [
     grim
@@ -17,7 +16,7 @@
   };
 
   home-manager.users.main = {
-    imports = [inputs.hyprland.homeManagerModules.default];
+    imports = [ inputs.hyprland.homeManagerModules.default ];
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home-manager.users.main = {
     programs.swaylock = {
       enable = true;
