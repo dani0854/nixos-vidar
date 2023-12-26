@@ -19,6 +19,10 @@
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,7 +43,7 @@
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
 
       # Packages and modifications, exported as overlays
-      overlays = import ./overlays;
+      overlays = import ./overlays { inherit inputs; };
 
       # NixOS modules you might want to export
       nixosModules = import ./modules;
@@ -49,11 +53,19 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           ({ lib, ... }: {
-            imports = lib.attrValues outputs.nixosModules;
+            imports = [
+              inputs.home-manager.nixosModules.home-manager
+            ] ++ lib.attrValues outputs.nixosModules;
             nixpkgs = {
               overlays = lib.attrValues outputs.overlays;
 
-              config.allowUnfree = true;
+              config = {
+                allowUnfree = true;
+                allowUnfreePredicate = (_: true);
+              };
+            };
+            home-manager = {
+              useGlobalPkgs = true;
             };
             nix.settings = {
               experimental-features = "nix-command flakes";
