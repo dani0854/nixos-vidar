@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nur.url = "github:nix-community/NUR";
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,10 +19,6 @@
     };
     helix = {
       url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -67,6 +64,7 @@
             };
             home-manager = {
               useGlobalPkgs = true;
+              backupFileExtension = "bkp";
             };
             nix.settings = {
               experimental-features = "nix-command flakes";
@@ -82,6 +80,7 @@
               ];
             };
           })
+          inputs.nur.nixosModules.nur
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen1
           ./config
         ];
