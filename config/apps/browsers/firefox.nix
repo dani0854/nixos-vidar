@@ -18,14 +18,14 @@
           tab-stash
         ];
 
-        search = {
-          default = "DuckDuckGo";
-          order = [
-            "DuckDuckGo"
-            "Google"
-            "Yandex"
-          ];
-        };
+        # search = {
+        #   default = "DuckDuckGo";
+        #   order = [
+        #     "DuckDuckGo"
+        #     "Google"
+        #     "Yandex"
+        #   ];
+        # };
 
         extraConfig = (builtins.readFile "${pkgs.betterfox}/share/betterfox/user.js");
 
