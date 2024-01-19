@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -81,6 +82,7 @@
               ];
             };
           })
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen1
           ./config
         ];
       };
