@@ -20,30 +20,26 @@
         ];
 
         search = {
-          default = "SearXNG";
+          default = "Brave";
+          privateDefault = "Brave";
           force = true;
           engines = {
-            "SearXNG" = {
-              description = "SearXNG is a metasearch engine that respects your privacy.";
+            "Brave" = {
               urls = [
                 {
                   rels = [ "results" ];
-                  method = "POST";
-                  template = "http://localhost:8888/search";
-                  params = [{ name = "q"; value = "{searchTerms}"; }];
+                  template = "https://search.brave.com/search?q={searchTerms}";
                 }
                 {
                   rels = [ "suggestions" ];
-                  method = "POST";
                   type = "application/x-suggestions+json";
-                  template = "http://localhost:8888/autocompleter?q={searchTerms}";
+                  template = "https://search.brave.com/api/suggest?q={searchTerms}";
                 }
               ];
 
-              searchForm = "http://localhost:8888/search";
-              iconUpdateURL = "http://localhost:8888/static/themes/simple/img/favicon.svg";
+              iconUpdateURL = "https://brave.com/static-assets/images/cropped-brave_appicon_release-32x32.png";
               updateInterval = 24 * 60 * 60 * 1000; # every day
-              definedAliases = [ "@searx" ];
+              definedAliases = [ "@brave" ];
             };
             "DuckDuckGo".metaData.hidden = true;
             "Bing".metaData.hidden = true;
@@ -57,6 +53,7 @@
 
         settings = {
           "extensions.activeThemeID" = "{758478b6-29f3-4d69-ab17-c49fe568ed80}";
+          "browser.search.suggest.enabled" = true;
         };
       };
     };
