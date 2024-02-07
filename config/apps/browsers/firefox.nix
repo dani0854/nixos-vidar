@@ -1,60 +1,57 @@
 { config, pkgs, ... }: {
 
-  home-manager.users.main = {
-    programs.firefox = {
-      enable = true;
-      package = pkgs.firefox-wayland;
+  home-manager.users.main.programs.firefox = {
+    enable = true;
+    package = pkgs.firefox-wayland;
 
-      profiles.default = {
+    profiles.default = {
+      extensions = with config.nur.repos.rycee.firefox-addons; [
+        ublock-origin
+        bitwarden
+        theme-nord-polar-night
+        languagetool
+        decentraleyes
+        sponsorblock
+        return-youtube-dislikes
+        tab-stash
+        translate-web-pages
+      ];
 
-        extensions = with config.nur.repos.rycee.firefox-addons; [
-          ublock-origin
-          bitwarden
-          theme-nord-polar-night
-          languagetool
-          decentraleyes
-          sponsorblock
-          return-youtube-dislikes
-          tab-stash
-          translate-web-pages
-        ];
+      search = {
+        default = "Brave";
+        privateDefault = "Brave";
+        force = true;
+        engines = {
+          "Brave" = {
+            urls = [
+              {
+                rels = [ "results" ];
+                template = "https://search.brave.com/search?q={searchTerms}";
+              }
+              {
+                rels = [ "suggestions" ];
+                type = "application/x-suggestions+json";
+                template = "https://search.brave.com/api/suggest?q={searchTerms}";
+              }
+            ];
 
-        search = {
-          default = "Brave";
-          privateDefault = "Brave";
-          force = true;
-          engines = {
-            "Brave" = {
-              urls = [
-                {
-                  rels = [ "results" ];
-                  template = "https://search.brave.com/search?q={searchTerms}";
-                }
-                {
-                  rels = [ "suggestions" ];
-                  type = "application/x-suggestions+json";
-                  template = "https://search.brave.com/api/suggest?q={searchTerms}";
-                }
-              ];
-
-              iconUpdateURL = "https://brave.com/static-assets/images/cropped-brave_appicon_release-32x32.png";
-              updateInterval = 24 * 60 * 60 * 1000; # every day
-              definedAliases = [ "@brave" ];
-            };
-            "DuckDuckGo".metaData.hidden = true;
-            "Bing".metaData.hidden = true;
-            "Google".metaData.hidden = true;
-            "Amazon.com".metaData.hidden = true;
-            "Wikipedia (en)".metaData.hidden = true;
+            iconUpdateURL = "https://brave.com/static-assets/images/cropped-brave_appicon_release-32x32.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "@brave" ];
           };
+          "DuckDuckGo".metaData.hidden = true;
+          "Bing".metaData.hidden = true;
+          "Google".metaData.hidden = true;
+          "Amazon.com".metaData.hidden = true;
+          "Wikipedia (en)".metaData.hidden = true;
         };
+      };
 
-        extraConfig = (builtins.readFile "${pkgs.betterfox}/share/betterfox/user.js");
+      extraConfig = (builtins.readFile "${pkgs.betterfox}/share/betterfox/user.js");
 
-        settings = {
-          "extensions.activeThemeID" = "{758478b6-29f3-4d69-ab17-c49fe568ed80}";
-          "browser.search.suggest.enabled" = true;
-        };
+      settings = {
+        "extensions.activeThemeID" = "{758478b6-29f3-4d69-ab17-c49fe568ed80}";
+        "browser.search.suggest.enabled" = true;
       };
     };
   };
