@@ -16,7 +16,8 @@
     home.file.".blerc".text = ''
       ble-import -d integration/fzf-completion
       ble-import -d integration/fzf-key-bindings
-      
+      ble-import -d integration/fzf-git
+
       bleopt term_index_colors=256
       bleopt term_true_colors=semicolon
 

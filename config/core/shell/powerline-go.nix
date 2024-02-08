@@ -6,7 +6,6 @@
       "nix-shell"
       "direnv"
       "git"
-      "exit"
     ];
   };
 }
