@@ -3,8 +3,9 @@ name = "nix"
 auto-format = true
 formatter = { command = "nixpkgs-fmt" }
 
-[[languages]]
+[[language]]
 name = "go"
+language-servers = [ "gopls", "golangci-lint-langserver", "gpt" ]
 auto-format = true
 formatter = { command = "goimports" }
 
@@ -14,3 +15,7 @@ language-servers = [ "marksman", "ltex-ls" ]
 
 [language-server.ltex-ls.config]
 ltex.languageToolHttpServerUri = "http://localhost:8081/"
+
+[language-server.gpt]
+command = "helix-gpt"
+args = ["--handler", "copilot"]
