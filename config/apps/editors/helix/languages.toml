@@ -1,12 +1,10 @@
 [[language]]
 name = "nix"
-auto-format = true
 formatter = { command = "nixpkgs-fmt" }
 
 [[language]]
 name = "go"
 language-servers = [ "gopls", "golangci-lint-lsp", "gpt" ]
-auto-format = true
 formatter = { command = "goimports" }
 
 [[language]]
