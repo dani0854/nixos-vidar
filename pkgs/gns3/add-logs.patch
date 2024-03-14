@@ -1,0 +1,22 @@
+diff --git a/gns3server/ubridge/hypervisor.py b/gns3server/ubridge/hypervisor.py
+index ba98ef33..41a146d4 100644
+--- a/gns3server/ubridge/hypervisor.py
++++ b/gns3server/ubridge/hypervisor.py
+@@ -135,7 +135,7 @@ class Hypervisor(UBridgeHypervisor):
+         Checks if the ubridge executable version
+         """
+         try:
+-            output = await subprocess_check_output(self._path, "-v", cwd=self._working_dir, env=env)
++            output = await subprocess_check_output(self._path, "-v", cwd=self._working_dir, env=env, stderr=True)
+             match = re.search(r"ubridge version ([0-9a-z\.]+)", output)
+             if match:
+                 self._version = match.group(1)
+@@ -148,7 +148,7 @@ class Hypervisor(UBridgeHypervisor):
+                 if parse_version(self._version) < parse_version(minimum_required_version):
+                     raise UbridgeError("uBridge executable version must be >= {}".format(minimum_required_version))
+             else:
+-                raise UbridgeError("Could not determine uBridge version for {}".format(self._path))
++                raise UbridgeError("Could not determine uBridge version, error: {}".format(output))
+         except (OSError, subprocess.SubprocessError) as e:
+             raise UbridgeError("Error while looking for uBridge version: {}".format(e))
+ 
