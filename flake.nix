@@ -2,7 +2,7 @@
   description = "Danil Suetin NixOS configuration. Code name: Vidar.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -10,7 +10,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/NUR";
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      # Lock until https://github.com/Duckonaut/split-monitor-workspaces/pull/54 merges
+      url = "github:hyprwm/Hyprland/4bff762d9733ba7334cd37b995cf51552cc80be0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     split-monitor-workspaces = {

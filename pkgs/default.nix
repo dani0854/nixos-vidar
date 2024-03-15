@@ -1,5 +1,4 @@
 { pkgs, ... }: rec {
-  wezterm = pkgs.callPackage ./wezterm { };
   betterfox = pkgs.callPackage ./betterfox.nix { };
 
   # gns3Packages = pkgs.dontRecurseIntoAttrs (pkgs.callPackage ./gns3 { });
