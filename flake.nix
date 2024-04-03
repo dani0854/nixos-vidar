@@ -11,7 +11,8 @@
     nur.url = "github:nix-community/NUR";
     hyprland = {
       # Lock until https://github.com/Duckonaut/split-monitor-workspaces/pull/54 merges
-      url = "github:hyprwm/Hyprland/4bff762d9733ba7334cd37b995cf51552cc80be0";
+      # And https://github.com/wez/wezterm/issues/5103 solved
+      url = "github:hyprwm/Hyprland/af0c8e299bbbf1726cecfde683137cfd4a6b8642";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     split-monitor-workspaces = {
