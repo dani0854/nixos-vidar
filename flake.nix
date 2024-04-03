@@ -7,16 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
     nur.url = "github:nix-community/NUR";
     hyprland = {
-      # Lock until https://github.com/Duckonaut/split-monitor-workspaces/pull/54 merges
-      # And https://github.com/wez/wezterm/issues/5103 solved
-      url = "github:hyprwm/Hyprland/af0c8e299bbbf1726cecfde683137cfd4a6b8642";
+      url = "github:hyprwm/Hyprland/v0.38.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix = {
-      url = "github:helix-editor/helix";
+      url = "github:helix-editor/helix/24.03";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
