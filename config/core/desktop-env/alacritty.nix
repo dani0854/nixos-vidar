@@ -3,6 +3,10 @@
     enable = true;
     settings = {
       font.normal.family = "Fira Code Nerd Font";
+      window = {
+        dynamic_padding = true;
+        decorations = "None";
+      };
     
       colors = {
         primary = {
