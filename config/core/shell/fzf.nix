@@ -2,6 +2,7 @@
   home-manager.users.main.programs.fzf = {
     enable = true;
     enableBashIntegration = false;
+    tmux.enableShellIntegration = true;
     colors = {
       "fg" = "#D8DEE9";
       "bg" = "#2E3440";
