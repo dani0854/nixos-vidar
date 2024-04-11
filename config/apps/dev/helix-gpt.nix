@@ -7,6 +7,8 @@ let
     export COPILOT_API_KEY=$(sed 's/^[[:space:]]*//;s/[[:space:]]*$//' $XDG_CONFIG_HOME/helix/copilot_api_key 2>/dev/null)
     export CODEIUM_API_KEY=$(sed 's/^[[:space:]]*//;s/[[:space:]]*$//' $XDG_CONFIG_HOME/helix/codeium_api_key 2>/dev/null)
 
+    export ACTION_TIMEOUT=100000
+
     set -e
 
     ${pkgs.helix-gpt}/bin/helix-gpt $@
