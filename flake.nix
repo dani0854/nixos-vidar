@@ -10,7 +10,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nur.url = "github:nix-community/NUR";
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      # https://github.com/hyprwm/Hyprland/pull/5667
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix = {
