@@ -15,6 +15,8 @@
         return-youtube-dislikes
         tab-stash
         translate-web-pages
+        vimium
+        i-dont-care-about-cookies
       ];
 
       search = {
