@@ -1,16 +1,17 @@
 { pkgs, ... }: {
 
-  programs.bash.blesh.enable = true;
+  programs.bash.completion.enable = true;
 
   users.users.main.shell = pkgs.bash;
-
-  environment.pathsToLink = [ "/share/bash-completion" ];
 
   home-manager.users.main = {
     programs.bash = {
       enable = true;
       enableCompletion = true;
       enableVteIntegration = true;
+      initExtra = ''
+        source ${pkgs.blesh}/share/blesh/ble.sh
+      '';
     };
 
     home.file.".blerc".text = ''
