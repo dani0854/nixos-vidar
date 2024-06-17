@@ -67,6 +67,7 @@
               useGlobalPkgs = true;
               backupFileExtension = "bkp";
             };
+            hardware.enableRedistributableFirmware = true;
             nix.settings = {
               experimental-features = "nix-command flakes";
               auto-optimise-store = true;
