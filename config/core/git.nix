@@ -12,7 +12,7 @@
     userName = "Danil Suetin";
     userEmail = "suetin085@protonmail.com";
     signing = {
-      key = "DE8B9CED0696C600";
+      key = "9076417E3D01C1B0";
       signByDefault = true;
     };
     lfs.enable = true;
