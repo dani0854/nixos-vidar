@@ -13,6 +13,10 @@
       };
       forward-zone = [
         {
+          name = "ts.net.";
+          forward-addr = "100.100.100.100";
+        }
+        {
           name = ".";
           forward-addr = "1.1.1.1@853#cloudflare-dns.com";
           forward-tls-upstream = "yes";
