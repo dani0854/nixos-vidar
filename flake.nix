@@ -68,17 +68,44 @@
               backupFileExtension = "bkp";
             };
             hardware.enableRedistributableFirmware = true;
-            nix.settings = {
-              experimental-features = "nix-command flakes";
-              auto-optimise-store = true;
+            nix = {
+              settings = {
+                experimental-features = "nix-command flakes";
+                auto-optimise-store = true;
+                max-jobs = 1;
+                cores = 8;
 
-              substituters = [
-                "https://hyprland.cachix.org"
-                "https://helix.cachix.org"
-              ];
-              trusted-public-keys = [
-                "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-                "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+                system-features = [
+                  "kvm"
+                  "nixos-test"
+                ];
+
+                substituters = [
+                  "https://hyprland.cachix.org"
+                  "https://helix.cachix.org"
+                ];
+                trusted-public-keys = [
+                  "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+                  "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+                ];
+              };
+              distributedBuilds = true;
+              buildMachines = [
+                {
+                  hostName = "defiant.tail45edb.ts.net";
+                  system = "x86_64-linux";
+                  sshUser = "dsuetin";
+                  sshKey = "/home/dsuetin/.ssh/id_ed25519";
+                  publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSURpU28rWWFSamhDczl2YzNvSGloZUk2a1BVQThDemhLQllGbnh2NUF0RUggcm9vdEBkZWZpYW50Cg==";
+                  speedFactor = 10;
+                  protocol = "ssh-ng";
+                  maxJobs = 2;
+                  supportedFeatures = [
+                    "big-parallel"
+                    "benchmark"
+                    "kvm"
+                  ];
+                }
               ];
             };
           })
