@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   boot = {
     initrd = {
       availableKernelModules = [
@@ -13,6 +13,7 @@
       kernelModules = [ "dm-snapshot" ];
     };
 
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "kvm-amd" ];
 
     extraModprobeConfig = "
