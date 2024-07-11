@@ -3,7 +3,7 @@
 
   environment.systemPackages = with pkgs; [
     iwgtk
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
   ];
 
   systemd.user.services.iwgtk = {
