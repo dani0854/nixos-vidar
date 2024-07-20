@@ -24,10 +24,10 @@
     languages = {
       language-server = {
         ltex-ls.config.ltex.languageToolHttpServerUri = "http://localhost:8081/";
-        gpt = {
-          command = "helix-gpt";
-          args = [ "--handler" "copilot" ];
-        };
+        # gpt = {
+        #   command = "helix-gpt";
+        #   args = [ "--handler" "copilot" ];
+        # };
       };
       language = [
         {
@@ -36,7 +36,7 @@
         }
         {
           name = "go";
-          language-servers = [ "gopls" "golangci-lint-lsp" "gpt" ];
+          language-servers = [ "gopls" "golangci-lint-lsp" ];
         }
         {
           name = "markdown";
