@@ -1,4 +1,4 @@
 {
   # List your module files here
-  languagetool = import ./languagetool.nix;
+  # languagetool = import ./languagetool.nix;
 }
