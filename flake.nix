@@ -9,15 +9,26 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nur.url = "github:nix-community/NUR";
+
     hyprland = {
       # https://github.com/hyprwm/Hyprland/pull/5667
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "hyprland/systems";
+        hyprutils.follows = "hyprland/hyprutils";
+        hyprlang.follows = "hyprland/hyprlang";
+      };
+    };
     waybar = {
       url = "github:Alexays/Waybar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     helix = {
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,6 +76,7 @@
             };
             home-manager = {
               useGlobalPkgs = true;
+              useUserPackages = true;
               backupFileExtension = "bkp";
             };
             hardware.enableRedistributableFirmware = true;
