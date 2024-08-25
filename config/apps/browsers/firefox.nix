@@ -17,6 +17,8 @@
         translate-web-pages
         vimium
         i-dont-care-about-cookies
+        leechblock-ng
+        remove-youtube-s-suggestions
       ];
 
       search = {
