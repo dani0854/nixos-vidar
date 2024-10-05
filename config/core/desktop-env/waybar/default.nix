@@ -1,8 +1,5 @@
-{ pkgs, inputs, ... }: {
-  programs.waybar = {
-    enable = true;
-    package = inputs.waybar.packages.${pkgs.stdenv.hostPlatform.system}.waybar;
-  };
+{ ... }: {
+  programs.waybar.enable = true;
 
   home-manager.users.main = {
     xdg.configFile."waybar/config".source = ./config;
