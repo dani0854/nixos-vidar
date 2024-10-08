@@ -1,9 +1,13 @@
 { pkgs, ... }: {
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.vhostUserPackages = with pkgs; [
+      virtiofsd
+    ];
+  };
 
-  environment.systemPackages = with pkgs; [
-    virt-manager
-  ];
+  programs.virt-manager.enable = true;
 
   users.users.main.extraGroups = [ "libvirtd" ];
+  home-manager.users.main.home.sessionVariables.LIBVIRT_DEFAULT_URI = "qemu:///system";
 }
