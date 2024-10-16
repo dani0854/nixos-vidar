@@ -1,7 +1,7 @@
 { ... }: {
   home-manager.users.main.programs.fzf = {
     enable = true;
-    enableBashIntegration = false;
+    enableFishIntegration = true;
     tmux.enableShellIntegration = true;
     colors = {
       "fg" = "#D8DEE9";
