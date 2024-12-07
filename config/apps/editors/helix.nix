@@ -42,6 +42,10 @@
           name = "markdown";
           language-servers = [ "marksman" "ltex-ls" ];
         }
+        {
+          name = "git-commit";
+          language-servers = [ "marksman" "ltex-ls" ];
+        }
       ];
     };
   };
