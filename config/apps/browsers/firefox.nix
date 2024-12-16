@@ -5,7 +5,7 @@
     package = pkgs.firefox-wayland;
 
     profiles.default = {
-      extensions = with config.nur.repos.rycee.firefox-addons; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         bitwarden
         theme-nord-polar-night
@@ -51,7 +51,7 @@
         };
       };
 
-      extraConfig = (builtins.readFile "${config.nur.repos.dsuetin.firefox.userjs.betterfox}/share/betterfox/user.js");
+      extraConfig = (builtins.readFile "${pkgs.nur.repos.dsuetin.firefox.userjs.betterfox}/share/betterfox/user.js");
 
       settings = {
         "extensions.activeThemeID" = "{758478b6-29f3-4d69-ab17-c49fe568ed80}";
