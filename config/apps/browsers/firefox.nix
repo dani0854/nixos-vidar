@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
 
   home-manager.users.main.programs.firefox = {
     enable = true;
@@ -51,7 +52,9 @@
         };
       };
 
-      extraConfig = (builtins.readFile "${pkgs.nur.repos.dsuetin.firefox.userjs.betterfox}/share/betterfox/user.js");
+      extraConfig = (
+        builtins.readFile "${pkgs.nur.repos.dsuetin.firefox.userjs.betterfox}/share/betterfox/user.js"
+      );
 
       settings = {
         "extensions.activeThemeID" = "{758478b6-29f3-4d69-ab17-c49fe568ed80}";

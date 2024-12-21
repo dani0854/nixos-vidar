@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   security.sudo.enable = false;
 
   security.doas = {

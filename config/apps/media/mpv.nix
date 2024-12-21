@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   home-manager.users.main.programs.mpv = {
     enable = true;
     bindings = {

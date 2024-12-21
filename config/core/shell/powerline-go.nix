@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   home-manager.users.main.programs.powerline-go = {
     enable = true;
     modules = [

@@ -1,7 +1,11 @@
-{ ... }: {
+{ ... }:
+{
   networking = {
     resolvconf.enable = false;
-    nameservers = [ "127.0.0.1" "::1" ];
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
     dhcpcd.extraConfig = "nohook resolv.conf";
   };
 
@@ -9,7 +13,10 @@
     enable = true;
     settings = {
       server = {
-        interface = [ "127.0.0.1" "::1" ];
+        interface = [
+          "127.0.0.1"
+          "::1"
+        ];
       };
       forward-zone = [
         {

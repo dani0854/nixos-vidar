@@ -1,7 +1,9 @@
-{ inputs
-, pkgs
-, ...
-}: {
+{
+  inputs,
+  pkgs,
+  ...
+}:
+{
   environment.systemPackages = with pkgs; [
     grim
     slurp

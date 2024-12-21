@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.languagetool = {
     enable = true;
     allowOrigin = "";

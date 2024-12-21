@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   home-manager.users.main.programs.alacritty = {
     enable = true;
     settings = {
@@ -7,7 +8,7 @@
         dynamic_padding = true;
         decorations = "None";
       };
-    
+
       colors = {
         primary = {
           background = "#2e3440";

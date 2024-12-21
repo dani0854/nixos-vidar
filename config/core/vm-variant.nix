@@ -1,7 +1,9 @@
-{ modulesPath
-, pkgs
-, ...
-}: {
+{
+  modulesPath,
+  pkgs,
+  ...
+}:
+{
   virtualisation.vmVariant = {
     # following configuration is added only when building VM with build-vm
 

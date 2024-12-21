@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   home-manager.users.main.programs.helix = {
     enable = true;
     package = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.helix;
@@ -36,15 +37,24 @@
         }
         {
           name = "go";
-          language-servers = [ "gopls" "golangci-lint-lsp" ];
+          language-servers = [
+            "gopls"
+            "golangci-lint-lsp"
+          ];
         }
         {
           name = "markdown";
-          language-servers = [ "marksman" "ltex-ls" ];
+          language-servers = [
+            "marksman"
+            "ltex-ls"
+          ];
         }
         {
           name = "git-commit";
-          language-servers = [ "marksman" "ltex-ls" ];
+          language-servers = [
+            "marksman"
+            "ltex-ls"
+          ];
         }
       ];
     };

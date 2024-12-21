@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.ssh.extraConfig = "ConnectTimeout=10";
 
   home-manager.users.main.programs.ssh = {

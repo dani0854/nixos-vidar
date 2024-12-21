@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   home-manager.users.main.programs.fzf = {
     enable = true;
     tmux.enableShellIntegration = true;
