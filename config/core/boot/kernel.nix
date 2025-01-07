@@ -15,6 +15,12 @@
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelPatches = [
+      {
+        name = "amdgpu_suspend_backlight";
+        patch = ../../../pkgs/linux/amdgpu_suspend_backlight.patch;
+      }
+    ];
     kernelModules = [ "kvm-amd" ];
 
     extraModprobeConfig = "
