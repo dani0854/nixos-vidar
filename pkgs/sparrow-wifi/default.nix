@@ -15,12 +15,13 @@
   imagemagick,
   makeDesktopItem,
   writeShellScript,
+  copyDesktopItems,
 }:
 let
   sparrow-wifi-desktop = makeDesktopItem {
     name = "sparrow-wifi";
     desktopName = "Sparrow WiFi";
-    exec = "@out@/bin/sparrow-wifi-pkexec";
+    exec = "sparrow-wifi-pkexec";
     comment = meta.description;
     icon = "sparrow_wifi_icon";
     categories = [ "Network" ];
@@ -55,8 +56,8 @@ let
 in
 python3.pkgs.buildPythonApplication {
   pname = "sparrow-wifi";
-  version = "unstable-2024-07-25";
-  format = "other";
+  version = "0-unstable-2024-07-25";
+  pyproject = false;
 
   src = fetchFromGitHub {
     owner = "ghostop14";
@@ -65,21 +66,21 @@ python3.pkgs.buildPythonApplication {
     sha256 = "sha256-0CWk6YQgbnwF5NWJsZEpHGlZ6DdH/lcGamBxHg2pa+Y=";
   };
 
+  buildInputs = [
+    qt5.qtwayland
+  ];
+
   propagatedBuildInputs = [
     usbutils
-    gpsd
     wirelesstools
     bluez
-    aircrack-ng
-    john
     iw
-    ubertooth
-    qt5.qtwayland
   ];
 
   nativeBuildInputs = [
     qt5.wrapQtAppsHook
     imagemagick
+    copyDesktopItems
   ];
 
   dependencies = with python3.pkgs; [
@@ -106,23 +107,23 @@ python3.pkgs.buildPythonApplication {
 
   postPatch = ''
     substituteInPlace sparrow-wifi.py \
-      --replace-fail "/usr/bin/xgps" "${gpsd}/bin/xgps"
+      --replace-fail "/usr/bin/xgps" "${lib.getExe' gpsd "xgps"}"
 
     substituteInPlace sparrowbluetooth.py \
-      --replace-fail "/usr/bin/ubertooth-specan" "${ubertooth}/bin/ubertooth-specan"
+      --replace-fail "/usr/bin/ubertooth-specan" "${lib.getExe' ubertooth "ubertooth-specan"}"
 
     substituteInPlace sparrowgps.py \
-      --replace-fail "/usr/sbin/gpsd" "${gpsd}/sbin/gpsd"
+      --replace-fail "/usr/sbin/gpsd" "${lib.getExe' gpsd "gpsd"}"
 
     substituteInPlace plugins/falconwifi.py \
-      --replace-fail "/usr/sbin/airodump-ng" "${aircrack-ng}/sbin/airodump-ng" \
-      --replace-fail "/usr/bin/aircrack-ng" "${aircrack-ng}/bin/aircrack-ng" \
-      --replace-fail "/usr/bin/wpapcap2john" "${john}/bin/wpapcap2john"
+      --replace-fail "/usr/sbin/airodump-ng" "${lib.getExe' aircrack-ng "airodump-ng"}" \
+      --replace-fail "/usr/bin/aircrack-ng" "${lib.getExe' aircrack-ng "aircrack-ng"}" \
+      --replace-fail "/usr/bin/wpapcap2john" "${lib.getExe' john "wpapcap2john"}"
 
     substituteInPlace plugins/falconwifidialogs.py \
-      --replace-fail "/usr/sbin/airodump-ng" "${aircrack-ng}/sbin/airodump-ng" \
-      --replace-fail "/usr/bin/aircrack-ng" "${aircrack-ng}/bin/aircrack-ng" \
-      --replace-fail "/usr/bin/wpapcap2john" "${john}/bin/wpapcap2john"
+      --replace-fail "/usr/sbin/airodump-ng" "${lib.getExe' aircrack-ng "airodump-ng"}" \
+      --replace-fail "/usr/bin/aircrack-ng" "${lib.getExe' aircrack-ng "aircrack-ng"}" \
+      --replace-fail "/usr/bin/wpapcap2john" "${lib.getExe' john "wpapcap2john"}"
   '';
 
   dontBuild = true;
@@ -169,11 +170,9 @@ python3.pkgs.buildPythonApplication {
     # add pkexec wrapper for desktop file
     substituteAll ${sparrow-wifi-pkexec} $out/bin/sparrow-wifi-pkexec
     chmod +x $out/bin/sparrow-wifi-pkexec
-
-    # add desktop file
-    mkdir -p $out/share/applications
-    substituteAll ${sparrow-wifi-desktop}/share/applications/sparrow-wifi.desktop $out/share/applications/sparrow-wifi.desktop
   '';
+
+  desktopItems = [ sparrow-wifi-desktop ];
 
   inherit meta;
 }
