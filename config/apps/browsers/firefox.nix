@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
 
   home-manager.users.main.programs.firefox = {
@@ -52,7 +52,7 @@
         };
       };
 
-      extraConfig = (
+      preConfig = (
         builtins.readFile "${pkgs.nur.repos.dsuetin.firefox.userjs.betterfox}/share/betterfox/user.js"
       );
 
