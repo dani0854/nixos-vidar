@@ -67,12 +67,19 @@
       let
         inherit (self) outputs;
 
-        treefmtEval = inputs.treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix;
+        overlays = import ./overlays;
+
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ overlays ];
+          config.allowUnfree = true;
+        };
+
+        treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
       in
       {
-        # Custom packages
         # Accessible through `nix build`, `nix shell`, etc
-        packages.${system} = import ./pkgs nixpkgs.legacyPackages.${system};
+        legacyPackages.${system} = pkgs;
 
         # `nix fmt`
         formatter.${system} = treefmtEval.config.build.wrapper;
@@ -82,8 +89,8 @@
           formatting = treefmtEval.config.build.check self;
         };
 
-        # Packages and modificat;ions, exported as overlays
-        overlays = import ./overlays { inherit inputs; };
+        # Packages and modifications, exported as overlays
+        overlays.default = overlays;
 
         # NixOS modules you might want to export
         nixosModules = import ./modules;
@@ -98,14 +105,7 @@
                 imports = [
                   inputs.home-manager.nixosModules.home-manager
                 ] ++ lib.attrValues outputs.nixosModules;
-                nixpkgs = {
-                  overlays = lib.attrValues outputs.overlays;
-
-                  config = {
-                    allowUnfree = true;
-                    allowUnfreePredicate = (_: true);
-                  };
-                };
+                nixpkgs.pkgs = pkgs;
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;

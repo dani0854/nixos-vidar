@@ -1,18 +1,8 @@
-{ inputs }:
-{
-  # This one brings our custom packages from the 'pkgs' directory
-  additions = final: prev: import ../pkgs { pkgs = final; };
+final: prev: with final; {
 
-  flake-inputs = final: _: {
-    inputs = builtins.mapAttrs (
-      _: flake:
-      let
-        legacyPackages = ((flake.legacyPackages or { }).${final.system} or { });
-        packages = ((flake.packages or { }).${final.system} or { });
-      in
-      if legacyPackages != { } then legacyPackages else packages
-    ) inputs;
-  };
+  pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+    (import ./python-modules { pkgs = final; })
+  ];
 
-  # wezterm = import ./wezterm;
+  sparrow-wifi = callPackage ./sparrow-wifi { };
 }
