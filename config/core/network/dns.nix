@@ -1,34 +1,16 @@
-{ ... }:
+{ config, ... }:
 {
-  networking = {
-    resolvconf.enable = false;
-    nameservers = [
-      "127.0.0.1"
-      "::1"
-    ];
-    dhcpcd.extraConfig = "nohook resolv.conf";
-  };
-
-  services.unbound = {
+  services.dnsmasq = {
     enable = true;
     settings = {
-      server = {
-        interface = [
-          "127.0.0.1"
-          "::1"
-        ];
-      };
-      forward-zone = [
-        {
-          name = "ts.net.";
-          forward-addr = "100.100.100.100";
-        }
-        {
-          name = ".";
-          forward-addr = "1.1.1.1@853#cloudflare-dns.com";
-          forward-tls-upstream = "yes";
-        }
-      ];
+      listen-address = "127.0.0.1,::1";
+      bind-interfaces = true;
+
+      cache-size = 10000;
+
+      # DNSSEC
+      conf-file = "${config.services.dnsmasq.package}/share/dnsmasq/trust-anchors.conf";
+      dnssec = true;
     };
   };
 }
