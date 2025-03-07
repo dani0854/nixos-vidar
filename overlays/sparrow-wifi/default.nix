@@ -72,9 +72,13 @@ python3.pkgs.buildPythonApplication {
 
   propagatedBuildInputs = [
     usbutils
+    gpsd
     wirelesstools
     bluez
+    aircrack-ng
+    john
     iw
+    ubertooth
   ];
 
   nativeBuildInputs = [
