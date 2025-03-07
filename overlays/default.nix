@@ -5,4 +5,21 @@ final: prev: with final; {
   ];
 
   sparrow-wifi = callPackage ./sparrow-wifi { };
+
+  gramps = prev.gramps.overridePythonAttrs (
+    {
+      propagatedBuildInputs ? [ ],
+      buildInputs ? [ ],
+      ...
+    }:
+    {
+      buildInputs = buildInputs ++ [
+        goocanvas2
+      ];
+
+      propagatedBuildInputs = propagatedBuildInputs ++ [
+        graphviz
+      ];
+    }
+  );
 }
