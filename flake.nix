@@ -2,10 +2,7 @@
   description = "Danil Suetin NixOS configuration. Code name: Vidar.";
 
   inputs = {
-    systems = {
-      url = "path:./flake.systems.nix";
-      flake = false;
-    };
+    systems.url = "github:nix-systems/x86_64-linux";
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
