@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    nil
+    nixd
     nix-tree
     nix-output-monitor
     nixfmt-rfc-style
