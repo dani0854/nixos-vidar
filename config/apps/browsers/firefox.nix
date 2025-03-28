@@ -23,11 +23,11 @@
       ];
 
       search = {
-        default = "Brave";
-        privateDefault = "Brave";
+        default = "google";
+        privateDefault = "brave";
         force = true;
         engines = {
-          "Brave" = {
+          brave = {
             urls = [
               {
                 rels = [ "results" ];
@@ -40,15 +40,14 @@
               }
             ];
 
-            iconUpdateURL = "https://brave.com/static-assets/images/cropped-brave_appicon_release-32x32.png";
+            icon = "https://brave.com/static-assets/images/cropped-brave_appicon_release-32x32.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [ "@brave" ];
           };
-          "DuckDuckGo".metaData.hidden = true;
-          "Bing".metaData.hidden = true;
-          "Google".metaData.hidden = true;
-          "Amazon.com".metaData.hidden = true;
-          "Wikipedia (en)".metaData.hidden = true;
+          ddg.metaData.hidden = true;
+          bing.metaData.hidden = true;
+          amazondotcom-us.metaData.hidden = true;
+          wikipedia.metaData.hidden = true;
         };
       };
 
