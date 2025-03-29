@@ -23,23 +23,41 @@
       };
     };
     languages = {
-      language-server = {
-        ltex-ls.config.ltex.languageToolHttpServerUri = "http://localhost:8081/";
-        # gpt = {
-        #   command = "helix-gpt";
-        #   args = [ "--handler" "copilot" ];
-        # };
-      };
       language = [
         {
           name = "nix";
           formatter.command = "nixfmt";
+          language-servers = [
+            "nixd"
+            "lsp-ai"
+          ];
         }
         {
           name = "go";
           language-servers = [
             "gopls"
             "golangci-lint-lsp"
+            "ltex-ls"
+            "lsp-ai"
+          ];
+        }
+        {
+          name = "python";
+          formatter = {
+            command = "ruff";
+            args = [
+              "format"
+              "--line-length"
+              "88"
+              "-"
+            ];
+          };
+          auto-format = true;
+          language-servers = [
+            "ruff"
+            "pyright"
+            "ltex-ls"
+            "lsp-ai"
           ];
         }
         {
