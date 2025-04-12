@@ -19,6 +19,7 @@
           PubkeyAcceptedKeyTypes ssh-ed25519
           ServerAliveInterval 60
           IPQoS throughput
+          Compression yes
           IdentityFile ${config.users.users.main.home}/.ssh/id_ed25519
           SetEnv ${toInlineShellVars nixbuildVars}
       '';
@@ -32,7 +33,15 @@
 
   nix = {
     distributedBuilds = true;
-    settings.builders-use-substitutes = true;
+    settings = {
+      builders-use-substitutes = true;
+      substituters = [
+        "ssh-ng://eu.nixbuild.net?priority=100"
+      ];
+      trusted-public-keys = [
+        "nixbuild.net/N3XYHK-1:5rIK3PMKyZuP01P36iv6ZW34qKMRMlcbHWOJhCNIOyg="
+      ];
+    };
     buildMachines = [
       {
         hostName = "eu.nixbuild.net";

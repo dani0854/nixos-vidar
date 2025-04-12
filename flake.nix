@@ -131,12 +131,10 @@
                     substituters = [
                       "https://hyprland.cachix.org"
                       "https://helix.cachix.org"
-                      "ssh://eu.nixbuild.net"
                     ];
                     trusted-public-keys = [
                       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
                       "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-                      "nixbuild.net/N3XYHK-1:5rIK3PMKyZuP01P36iv6ZW34qKMRMlcbHWOJhCNIOyg="
                     ];
                   };
                 };
