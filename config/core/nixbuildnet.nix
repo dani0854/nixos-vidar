@@ -37,6 +37,7 @@
       {
         hostName = "eu.nixbuild.net";
         system = "x86_64-linux";
+        protocol = "ssh-ng";
         speedFactor = 100;
         maxJobs = 25;
         supportedFeatures = [

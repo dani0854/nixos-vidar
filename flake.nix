@@ -119,9 +119,13 @@
                     max-jobs = 3;
                     cores = 4;
 
-                    system-features = [
+                    system-features = lib.mkForce [
                       "kvm"
                       "nixos-test"
+                    ];
+
+                    trusted-users = [
+                      "dsuetin"
                     ];
 
                     substituters = [
