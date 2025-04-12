@@ -15,7 +15,10 @@
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [
+      "kvm-amd"
+      "ntsync"
+    ];
 
     extraModprobeConfig = "
       options iwlwifi power_save=0

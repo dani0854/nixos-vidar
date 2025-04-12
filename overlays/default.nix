@@ -6,6 +6,8 @@ final: prev: with final; {
 
   sparrow-wifi = callPackage ./sparrow-wifi { };
 
+  proton-cachyos-bin = callPackage ./proton-cachyos/bin.nix { };
+
   gramps = prev.gramps.overridePythonAttrs (
     {
       propagatedBuildInputs ? [ ],
