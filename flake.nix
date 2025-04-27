@@ -40,6 +40,56 @@
         hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
       };
     };
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprutils.follows = "hyprland/hyprutils";
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+      };
+    };
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        hyprgraphics.follows = "hyprland/hyprgraphics";
+        hyprutils.follows = "hyprland/hyprutils";
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+      };
+    };
+    hyprpolkitagent = {
+      url = "github:hyprwm/hyprpolkitagent";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        hyprutils.follows = "hyprland/hyprutils";
+        hyprland-qt-support.follows = "hyprland/hyprland-qtutils/hyprland-qt-support";
+      };
+    };
+    hyprsunset = {
+      url = "github:hyprwm/hyprsunset";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        hyprland-protocols.follows = "hyprland/hyprland-protocols";
+        hyprutils.follows = "hyprland/hyprutils";
+        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+      };
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        hyprland.follows = "hyprland";
+      };
+    };
+
     helix = {
       url = "github:helix-editor/helix";
       inputs = {
@@ -71,6 +121,13 @@
           overlays = [
             overlays
             inputs.nur.overlays.default
+            inputs.hyprland.overlays.default
+            inputs.hypridle.overlays.default
+            inputs.hyprpaper.overlays.default
+            inputs.hyprlock.overlays.default
+            inputs.hyprpolkitagent.overlays.default
+            inputs.hyprsunset.overlays.default
+            inputs.hyprland-plugins.overlays.default
           ];
           config.allowUnfree = true;
         };

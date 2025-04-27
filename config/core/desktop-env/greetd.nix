@@ -1,10 +1,10 @@
-{ config, ... }:
+{ lib, config, ... }:
 {
   services.greetd = {
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${config.home-manager.users.main.wayland.windowManager.hyprland.package}/bin/Hyprland";
+        command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
         user = config.users.users.main.name;
       };
       default_session = initial_session;

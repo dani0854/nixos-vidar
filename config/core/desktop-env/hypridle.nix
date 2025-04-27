@@ -1,21 +1,15 @@
 {
-  inputs,
   pkgs,
   ...
 }:
-let
-  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  hypridle = inputs.hypridle.packages.${pkgs.system}.hypridle;
-in
 {
   home-manager.users.main.services.hypridle = {
     enable = true;
-    package = hypridle;
     settings = {
       general = {
-        lock_cmd = "${pkgs.swaylock-effects}/bin/swaylock -f";
+        # lock_cmd = "${pkgs.swaylock-effects}/bin/swaylock -f"
         before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
-        after_sleep_cmd = "${hyprland}/bin/hyprctl dispatch dpms on";
+        after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
       };
       listener = [
         {
@@ -24,8 +18,8 @@ in
         }
         {
           timeout = 600;
-          on-timeout = "${hyprland}/bin/hyprctl dispatch dpms off";
-          on-resume = "${hyprland}/bin/hyprctl dispatch dpms on";
+          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
         }
         {
           timeout = 400;
