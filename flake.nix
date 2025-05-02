@@ -22,81 +22,6 @@
       };
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs = {
-        systems.follows = "systems";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-    hypridle = {
-      url = "github:hyprwm/hypridle";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        hyprutils.follows = "hyprland/hyprutils";
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprland-protocols.follows = "hyprland/hyprland-protocols";
-        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
-      };
-    };
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprutils.follows = "hyprland/hyprutils";
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
-      };
-    };
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        hyprgraphics.follows = "hyprland/hyprgraphics";
-        hyprutils.follows = "hyprland/hyprutils";
-        hyprlang.follows = "hyprland/hyprlang";
-        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
-      };
-    };
-    hyprpolkitagent = {
-      url = "github:hyprwm/hyprpolkitagent";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        hyprutils.follows = "hyprland/hyprutils";
-        hyprland-qt-support.follows = "hyprland/hyprland-qtutils/hyprland-qt-support";
-      };
-    };
-    hyprsunset = {
-      url = "github:hyprwm/hyprsunset";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        hyprland-protocols.follows = "hyprland/hyprland-protocols";
-        hyprutils.follows = "hyprland/hyprutils";
-        hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
-      };
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-        hyprland.follows = "hyprland";
-      };
-    };
-
-    helix = {
-      url = "github:helix-editor/helix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -121,13 +46,6 @@
           overlays = [
             overlays
             inputs.nur.overlays.default
-            inputs.hyprland.overlays.default
-            inputs.hypridle.overlays.default
-            inputs.hyprpaper.overlays.default
-            inputs.hyprlock.overlays.default
-            inputs.hyprpolkitagent.overlays.default
-            inputs.hyprsunset.overlays.default
-            inputs.hyprland-plugins.overlays.default
           ];
           config.allowUnfree = true;
         };
@@ -183,15 +101,6 @@
 
                     trusted-users = [
                       "dsuetin"
-                    ];
-
-                    substituters = [
-                      "https://hyprland.cachix.org"
-                      "https://helix.cachix.org"
-                    ];
-                    trusted-public-keys = [
-                      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-                      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
                     ];
                   };
                 };

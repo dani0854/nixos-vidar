@@ -1,8 +1,7 @@
-{ inputs, pkgs, ... }:
+{ ... }:
 {
   home-manager.users.main.programs.helix = {
     enable = true;
-    package = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.helix;
     defaultEditor = true;
     settings = {
       theme = "nord";
