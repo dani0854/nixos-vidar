@@ -1,6 +1,9 @@
 { ... }:
 {
   home-manager.users.main = {
-    xdg.enable = true;
+    xdg = {
+      enable = true;
+      mimeApps.enable = true;
+    };
   };
 }
