@@ -18,7 +18,6 @@
       url = "github:nix-community/NUR";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
       };
     };
 
@@ -79,7 +78,8 @@
               {
                 imports = [
                   inputs.home-manager.nixosModules.home-manager
-                ] ++ lib.attrValues outputs.nixosModules;
+                ]
+                ++ lib.attrValues outputs.nixosModules;
                 nixpkgs.pkgs = pkgs;
                 home-manager = {
                   useGlobalPkgs = true;
