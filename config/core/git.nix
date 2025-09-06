@@ -11,9 +11,9 @@
     enable = true;
     package = pkgs.git;
     userName = "Danil Suetin";
-    userEmail = "suetin085@protonmail.com";
+    userEmail = "suetin085@proton.me";
     signing = {
-      key = "9076417E3D01C1B0";
+      key = "385EA9BE340A2FA8";
       signByDefault = true;
     };
     lfs.enable = true;
