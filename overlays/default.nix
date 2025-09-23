@@ -24,16 +24,4 @@ final: prev: with final; {
       ];
     }
   );
-
-  gns3-server = prev.gns3-server.overridePythonAttrs (
-    {
-      disabledTestPaths ? [ ],
-      ...
-    }:
-    {
-      disabledTestPaths = disabledTestPaths ++ [
-        "tests/controller/test_project.py"
-      ];
-    }
-  );
 }
