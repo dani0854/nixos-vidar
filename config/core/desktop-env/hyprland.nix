@@ -38,7 +38,9 @@
         shadow.color = "rgba(2e3440ee)";
       };
 
-      gestures.workspace_swipe = true;
+      gesture = [
+        "3, horizontal, workspace"
+      ];
 
       input = {
         kb_layout = "us,ru";

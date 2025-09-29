@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
   ];
 }
