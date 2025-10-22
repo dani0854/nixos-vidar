@@ -1,12 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    nixos-option
     wget
-    htop
   ];
 }
