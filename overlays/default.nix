@@ -36,4 +36,8 @@ final: prev: with final; {
   # TODO: remove when merged
   # https://github.com/NixOS/nixpkgs/pull/450737
   sdrpp = callPackage ./sdrpp/package.nix { };
+
+  # TODO: remove when merged
+  # https://github.com/NixOS/nixpkgs/pull/454686
+  ubertooth = callPackage ./ubertooth/package.nix { };
 }
