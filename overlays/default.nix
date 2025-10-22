@@ -24,4 +24,12 @@ final: prev: with final; {
       ];
     }
   );
+
+  # TODO: remove when merged
+  # https://github.com/NixOS/nixpkgs/pull/450849
+  inherit (callPackage ./docker { })
+    docker_25
+    docker_28
+    ;
+  docker-compose = callPackage ./docker/compose.nix { };
 }
