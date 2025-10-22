@@ -7,19 +7,21 @@
 
     profiles.default = {
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        ublock-origin
         bitwarden
-        theme-nord-polar-night
-        languagetool
         decentraleyes
-        sponsorblock
-        return-youtube-dislikes
-        tab-stash
-        translate-web-pages
-        vimium
+        github-file-icons
         i-dont-care-about-cookies
+        languagetool
         leechblock-ng
+        refined-github
         remove-youtube-s-suggestions
+        return-youtube-dislikes
+        sponsorblock
+        tab-stash
+        theme-nord-polar-night
+        translate-web-pages
+        ublock-origin
+        vimium
       ];
 
       search = {
