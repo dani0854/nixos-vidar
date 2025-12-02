@@ -3,7 +3,6 @@
 
   home-manager.users.main.programs.firefox = {
     enable = true;
-    package = pkgs.firefox-wayland;
 
     profiles.default = {
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [

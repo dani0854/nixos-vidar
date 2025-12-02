@@ -10,29 +10,28 @@
   home-manager.users.main.programs.git = {
     enable = true;
     package = pkgs.git;
-    userName = "Danil Suetin";
-    userEmail = "suetin085@proton.me";
-    signing = {
-      key = "385EA9BE340A2FA8";
-      signByDefault = true;
-    };
-    lfs.enable = true;
-    aliases = {
-      lola = "log --graph --decorate --pretty=\"<%C(Yellow)%h%Creset>%C(auto)%d %Cred\\\"%Creset%s%Cred\\\" %C(Yellow)[%Cgreen%ar%C(Yellow)] - %Cred%an\" --abbrev-commit --all --date=raw";
-      lol = "log --graph --decorate --pretty=\"<%C(Yellow)%h%Creset>%C(auto)%d %Cred\\\"%Creset%s%Cred\\\" %C(Yellow)[%Cgreen%ar%C(Yellow)] - %Cred%an\" --abbrev-commit";
-      s = "status --short";
-      co = "checkout";
-      b = "branch";
-      bl = "blame -w -C -C -C";
-      p = "push";
-      pf = "push --force-with-lease";
-      f = "fetch";
-      r = "rebase";
-      c = "commit";
-      mt = "mergetool";
-      cdiff = "diff-tree --no-commit-id --name-status -r HEAD";
-    };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Danil Suetin";
+        email = "suetin085@proton.me";
+      };
+      alias = {
+        lola = "log --graph --decorate --pretty=\"<%C(Yellow)%h%Creset>%C(auto)%d %Cred\\\"%Creset%s%Cred\\\" %C(Yellow)[%Cgreen%ar%C(Yellow)] - %Cred%an\" --abbrev-commit --all --date=raw";
+        lol = "log --graph --decorate --pretty=\"<%C(Yellow)%h%Creset>%C(auto)%d %Cred\\\"%Creset%s%Cred\\\" %C(Yellow)[%Cgreen%ar%C(Yellow)] - %Cred%an\" --abbrev-commit";
+        s = "status --short";
+        co = "checkout";
+        b = "branch";
+        bl = "blame -w -C -C -C";
+        p = "push";
+        pf = "push --force-with-lease";
+        f = "fetch";
+        r = "rebase";
+        c = "commit";
+        mt = "mergetool";
+        cdiff = "diff-tree --no-commit-id --name-status -r HEAD";
+        d = "diff";
+        ds = "diff --staged";
+      };
       core = {
         autocrlf = false;
         longpaths = true;
@@ -44,5 +43,10 @@
       column.ui = "auto";
       branch.sort = "-committerdate";
     };
+    signing = {
+      key = "385EA9BE340A2FA8";
+      signByDefault = true;
+    };
+    lfs.enable = true;
   };
 }
