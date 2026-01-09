@@ -9,6 +9,8 @@
         bufferline = "multiple";
         color-modes = true;
         true-color = true;
+        mouse = false;
+        file-picker.hidden = false;
       };
       keys.insert = {
         up = "no_op";
