@@ -5,9 +5,14 @@
   ];
 
   home-manager.users.main = {
-    wayland.windowManager.hyprland.settings.windowrulev2 = [
-      "float,class:(imv)"
-      "center,class:(imv)"
+    wayland.windowManager.hyprland.settings.windowrule = [
+      {
+        name = "imv";
+        "match:class" = "imv";
+
+        float = true;
+        center = true;
+      }
     ];
 
     xdg.mimeApps.defaultApplications = lib.attrsets.genAttrs [

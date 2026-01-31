@@ -5,9 +5,14 @@
   ];
 
   home-manager.users.main = {
-    wayland.windowManager.hyprland.settings.windowrulev2 = [
-      "float,class:(org.pwmt.zathura)"
-      "center,class:(org.pwmt.zathura)"
+    wayland.windowManager.hyprland.settings.windowrule = [
+      {
+        name = "zathura";
+        "match:class" = "org.pwmt.zathura";
+
+        float = true;
+        center = true;
+      }
     ];
 
     xdg.mimeApps.defaultApplications = {

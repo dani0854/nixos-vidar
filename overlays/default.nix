@@ -16,7 +16,7 @@ final: prev: with final; {
     }:
     {
       buildInputs = buildInputs ++ [
-        goocanvas2
+        goocanvas_2
       ];
 
       propagatedBuildInputs = propagatedBuildInputs ++ [
